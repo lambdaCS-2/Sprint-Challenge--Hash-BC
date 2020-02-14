@@ -9,9 +9,19 @@ from hashtables import (HashTable,
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
-    """
-    YOUR CODE HERE
-    """
+    for i in range(length):
+        # subtract the current value from the limit and store the difference 
+        # which will be the number we are looking for in the hashtable 
+
+        diff = limit - weights[i]
+        # search the hashtable for a match to the difference
+        match = hash_table_retrieve(ht, diff)
+        if match is not None:
+            #  if match is found return with the current index first
+            return [i, match]
+        # if there is no match, store the current value in the hashtable and keep looking
+        hash_table_insert(ht, weights[i], i)
+
 
     return None
 
